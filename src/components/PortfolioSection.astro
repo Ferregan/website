@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from "astro:content";
+type PortfolioItem = CollectionEntry<"portfolio">;
+
+export interface Props {
+  item: PortfolioItem;
+}
+
+const props = Astro.props;
+
+const { Content } = await props.item.render();
+---
+
+<article class="pb-96">
+  <h2 id={props.item.slug}>Client: {props.item.data.title}</h2>
+  <Content />
+</article>

@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+
+import PortfolioSection from "../components/PortfolioSection.astro";
+
+const portfolioItems = await getCollection("portfolio");
+const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="flex flex-row">
+    <nav class="flex flex-col">
+      <ul class="sticky top-0 flex flex-col">
+        {
+          portfolio.map((item) => (
+            <a href={`#${item.slug}`}>{item.data.title}</a>
+          ))
+        }
+      </ul>
+    </nav>
+    <main class="flex flex-1 flex-col">
+      <header>
+        <h1>Ferregan</h1>
+      </header>
+      {portfolio.map((item) => <PortfolioSection item={item} />)}
+    </main>
+    <footer>
+      <nav class="sticky top-0">About</nav>
+    </footer>
+  </body>
+</html>
+
+<script>
+  // smooth scrolling on navigation click
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const headingId = anchor.getAttribute("href");
+      window.history.replaceState(null, "", headingId);
+
+      document.querySelector(`${headingId}`)?.scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
