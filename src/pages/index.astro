@@ -21,7 +21,9 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </ul>
   </nav>
   <main class="flex flex-1 flex-col pt-28 max-w-3xl mr-12">
-    <header class="pl-4 -ml-4 backdrop-blur fixed top-0 w-full bg-white/80 h-28 pt-5">
+    <header
+      class="pl-4 -ml-4 backdrop-blur fixed top-0 w-full bg-white/80 h-28 pt-5"
+    >
       <h1 class="text-3xl font-bold">Ferregan</h1>
     </header>
     {portfolio.map((item) => <PortfolioSection item={item} />)}
@@ -31,10 +33,10 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
       <div
         class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row font-bold gap-8"
       >
-        <a href="#">About</a>
-        <a href="#">Instagram</a>
-        <a href="#">gustavo@ferregan.com</a>
-        <a href="#">+43 670 551 3222</a>
+        <a href="/about">About</a>
+        <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
+        <a href="mailto:gustavo@ferregan.com">gustavo@ferregan.com</a>
+        <a href="tel:00436705513222">+43 670 551 3222</a>
       </div>
     </nav>
   </footer>

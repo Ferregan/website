@@ -6,13 +6,30 @@ export interface Props {
   item: PortfolioItem;
 }
 
-const props = Astro.props;
+const { item } = Astro.props;
 
-const { Content } = await props.item.render();
+const { Content } = await item.render();
 ---
 
-<article class="pb-64">
+<article class="pb-64 text-sm/4 text-justify">
   <img src="/image.png" />
-  <h2 id={props.item.slug}>Client: {props.item.data.title}</h2>
+  <br />
+  <div class="flex flex-row">
+    <h2 class="flex-1" id={item.slug}>
+      Client: <br />
+      {item.data.title}
+    </h2>
+    <span>
+      Date: <br />
+      {item.data.date}
+    </span>
+  </div>
+  <br />
+  Services:
+  <ul>
+    {item.data.services.map((service) => <li>{service}</li>)}
+  </ul>
+  <br />
+  Description:
   <Content />
 </article>

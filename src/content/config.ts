@@ -5,6 +5,8 @@ const portfolioCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         order: z.number(),
+        date: z.string(),
+        services: z.array(z.string()),
     }),
 });
 
