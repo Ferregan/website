@@ -7,8 +7,8 @@ module.exports = {
         },
         colors: {
             transparent: "rgba(0, 0, 0, 0)",
-            white: "#FFFFFF",
-            black: "#1C1C1C",
+            white: "rgb(255, 255, 255)",
+            black: "rgb(28, 28, 28)",
         },
         extend: {},
     },

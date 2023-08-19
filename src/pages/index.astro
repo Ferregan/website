@@ -21,7 +21,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </ul>
   </nav>
   <main class="flex flex-1 flex-col pt-28 max-w-3xl mr-12">
-    <header class="fixed top-0 w-full bg-white h-28 pt-5">
+    <header class="pl-4 -ml-4 backdrop-blur fixed top-0 w-full bg-white/80 h-28 pt-5">
       <h1 class="text-3xl font-bold">Ferregan</h1>
     </header>
     {portfolio.map((item) => <PortfolioSection item={item} />)}
