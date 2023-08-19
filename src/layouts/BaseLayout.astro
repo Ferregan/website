@@ -1,0 +1,31 @@
+---
+export interface Props {
+    class?: string,
+}
+
+const { class: bodyClass = "bg-white text-black" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ferregan</title>
+    <style>
+      @font-face {
+        font-family: "Satoshi-Variable";
+        src: url("/fonts/Satoshi-Variable.woff2") format("woff2"),
+          url("/fonts/Satoshi-Variable.woff") format("woff"),
+          url("/fonts/Satoshi-Variable.ttf") format("truetype");
+        font-weight: 400 700;
+        font-display: swap;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class={`${bodyClass} flex flex-row`}>
+    <slot />
+  </body>
+</html>

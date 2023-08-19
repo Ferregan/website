@@ -2,41 +2,43 @@
 import { getCollection } from "astro:content";
 
 import PortfolioSection from "../components/PortfolioSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body class="flex flex-row">
-    <nav class="flex flex-col">
-      <ul class="sticky top-0 flex flex-col">
-        {
-          portfolio.map((item) => (
-            <a href={`#${item.slug}`}>{item.data.title}</a>
-          ))
-        }
-      </ul>
+<BaseLayout>
+  <nav class="flex flex-col pr-20 w-64 ml-16">
+    <ul class="sticky top-5 flex flex-col">
+      {
+        portfolio.map((item) => (
+          <a class="hover:font-bold" href={`#${item.slug}`}>
+            {item.data.title}
+          </a>
+        ))
+      }
+    </ul>
+  </nav>
+  <main class="flex flex-1 flex-col pt-28 max-w-3xl mr-12">
+    <header class="fixed top-0 w-full bg-white h-28 pt-5">
+      <h1 class="text-3xl font-bold">Ferregan</h1>
+    </header>
+    {portfolio.map((item) => <PortfolioSection item={item} />)}
+  </main>
+  <footer>
+    <nav class="fixed right-0 inset-y-0 w-6">
+      <div
+        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row font-bold gap-8"
+      >
+        <a href="#">About</a>
+        <a href="#">Instagram</a>
+        <a href="#">gustavo@ferregan.com</a>
+        <a href="#">+43 670 551 3222</a>
+      </div>
     </nav>
-    <main class="flex flex-1 flex-col">
-      <header>
-        <h1>Ferregan</h1>
-      </header>
-      {portfolio.map((item) => <PortfolioSection item={item} />)}
-    </main>
-    <footer>
-      <nav class="sticky top-0">About</nav>
-    </footer>
-  </body>
-</html>
-
+  </footer>
+</BaseLayout>
 <script>
   // smooth scrolling on navigation click
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -48,6 +50,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 
       document.querySelector(`${headingId}`)?.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       });
     });
   });
