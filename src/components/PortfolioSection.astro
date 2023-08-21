@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 type PortfolioItem = CollectionEntry<"portfolio">;
 
@@ -9,10 +10,13 @@ export interface Props {
 const { item } = Astro.props;
 
 const { Content } = await item.render();
+
+import Grid from "./Grid.astro";
+import Slideshow from "./Slideshow.astro";
 ---
 
 <article class="pb-64 text-sm/4 text-justify">
-  <img src="/image.png" />
+  <Image src={item.data.banner} alt="" />
   <br />
   <div class="flex flex-row">
     <h2 class="flex-1" id={item.slug}>
@@ -31,5 +35,5 @@ const { Content } = await item.render();
   </ul>
   <br />
   Description:
-  <Content />
+  <Content components={{ Grid, Slideshow }} />
 </article>

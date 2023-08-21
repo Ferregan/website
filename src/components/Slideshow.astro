@@ -1,0 +1,25 @@
+<div class="slideshow aspect-square">
+  <slot />
+</div>
+
+<script>
+  const slideshows = document.querySelectorAll(".slideshow");
+
+  for (const container of slideshows) {
+    for (const e of container.children) {
+      e.classList.add("hidden");
+    }
+
+    const numChildren = container.children.length;
+    let currentChild = 0;
+
+    container.children[currentChild].classList.toggle("hidden");
+
+    setInterval(() => {
+      const prevChild = currentChild;
+      container.children[prevChild].classList.toggle("hidden");
+      currentChild = (prevChild + 1) % numChildren;
+      container.children[currentChild].classList.toggle("hidden");
+    }, 700);
+  }
+</script>
