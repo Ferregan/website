@@ -13,17 +13,17 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     <ul class="sticky top-5 flex flex-col">
       {
         portfolio.map((item) => (
-          <a class="hover:font-bold" href={`#${item.slug}`}>
-            {item.data.title}
-          </a>
+          <li>
+            <a class="hover:font-bold" href={`#${item.slug}`}>
+              {item.data.title}
+            </a>
+          </li>
         ))
       }
     </ul>
   </nav>
   <main class="flex flex-1 flex-col pt-28 max-w-3xl mr-12">
-    <header
-      class="fixed top-0 w-full bg-white h-28 pt-5"
-    >
+    <header class="fixed top-0 w-full bg-white h-28 pt-5">
       <h1 class="text-3xl font-bold">Ferregan</h1>
     </header>
     {portfolio.map((item) => <PortfolioSection item={item} />)}
@@ -41,13 +41,36 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </nav>
   </footer>
 </BaseLayout>
-<script>
-  // smooth scrolling on navigation click
+<script>import { intersection } from "astro/zod";
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    const headingId = anchor.getAttribute("href");
+
+    // highlight current section
+    const observer = new IntersectionObserver(
+      (e) => {
+        for (const intersectionEvent of e) {
+          if (intersectionEvent.isIntersecting) {
+            anchor.classList.add("font-bold");
+          } else {
+            anchor.classList.remove("font-bold");
+          }
+        }
+      },
+    );
+
+    const linkedSection = document.querySelector(
+      `article[data-section="${headingId?.substring(1)}"]`
+    );
+
+    if (linkedSection) {
+      observer.observe(linkedSection);
+    }
+
+    // smooth scrolling on navigation click
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const headingId = anchor.getAttribute("href");
       window.history.replaceState(null, "", headingId);
 
       document.querySelector(`${headingId}`)?.scrollIntoView({
