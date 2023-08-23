@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import PortfolioSection from "../components/PortfolioSection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
@@ -49,9 +50,10 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
               portfolio.map((item) => (
                 <li class="text-xs/6 pb-1">
                   <a href={`#${item.slug}`}>
-                    <img
+                    <Image
                       class="aspect-video object-cover w-full"
-                      src={item.data.banner.src}
+                      alt={`Banner for ${item.data.title}`}
+                      src={item.data.banner}
                     />
                     {item.data.title}
                   </a>
