@@ -9,6 +9,7 @@ module.exports = {
             transparent: "rgba(0, 0, 0, 0)",
             white: "rgb(255, 255, 255)",
             black: "rgb(28, 28, 28)",
+            yellow: "rgb(255, 224, 35)",
         },
         extend: {},
     },

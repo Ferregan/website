@@ -9,7 +9,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <nav class="flex flex-col pr-20 w-64 ml-16">
+  <nav class="hidden md:flex flex-col pr-20 w-64 ml-16">
     <ul class="sticky top-5 flex flex-col">
       {
         portfolio.map((item) => (
@@ -22,16 +22,52 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
       }
     </ul>
   </nav>
-  <main class="flex flex-1 flex-col pt-28 max-w-3xl mr-12">
-    <header class="fixed top-0 w-full bg-white h-28 pt-5">
-      <h1 class="text-3xl font-bold">Ferregan</h1>
+  <main class="flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-6">
+    <header
+      class="sticky flex justify-between items-start top-0 w-full bg-white h-28 pt-5"
+    >
+      <h1 class="text-3xl font-bold z-50">Ferregan</h1>
+      <button
+        type="button"
+        class="h-9 md:hidden whitespace-nowrap"
+        id="mobile-menu-open"
+      >
+        Menu
+      </button>
+      <nav
+        id="mobile-menu"
+        class="fixed md:hidden transition-[left] left-full w-full inset-y-0 z-30"
+      >
+        <div class="ml-14 bg-yellow h-full flex flex-col">
+          <div class="pt-5 h-28 flex items-start">
+            <button class="ml-auto h-9 px-6" id="mobile-menu-close"
+              >Close</button
+            >
+          </div>
+          <ul class="flex-1 px-3 overflow-auto">
+            {
+              portfolio.map((item) => (
+                <li class="text-xs/6 pb-1">
+                  <a href={`#${item.slug}`}>
+                    <img
+                      class="aspect-video object-cover w-full"
+                      src={item.data.banner.src}
+                    />
+                    {item.data.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </nav>
     </header>
     {portfolio.map((item) => <PortfolioSection item={item} />)}
   </main>
   <footer>
-    <nav class="fixed right-0 inset-y-0 w-6">
+    <nav class="sticky right-0 inset-y-0 w-6">
       <div
-        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row font-bold gap-8"
+        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold md:-translate-x-3 gap-8 whitespace-nowrap"
       >
         <a href="/about">About</a>
         <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
@@ -41,23 +77,44 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </nav>
   </footer>
 </BaseLayout>
-<script>import { intersection } from "astro/zod";
+<script>
+  const mobileMenu = document.getElementById("mobile-menu");
+  const footer = document.getElementsByTagName("footer")[0];
+
+  function openMobileMenu() {
+    mobileMenu?.classList.add("left-0");
+    mobileMenu?.classList.remove("left-full");
+    // make content behind fixed overlay non-scrollable
+    document.body.classList.add("overflow-hidden");
+    footer?.classList.add("invisible");
+  }
+  function closeMobileMenu() {
+    mobileMenu?.classList.remove("left-0");
+    mobileMenu?.classList.add("left-full");
+    document.body.classList.remove("overflow-hidden");
+    footer?.classList.remove("invisible");
+  }
+
+  document
+    .getElementById("mobile-menu-open")
+    ?.addEventListener("click", openMobileMenu);
+  document
+    .getElementById("mobile-menu-close")
+    ?.addEventListener("click", closeMobileMenu);
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const headingId = anchor.getAttribute("href");
 
     // highlight current section
-    const observer = new IntersectionObserver(
-      (e) => {
-        for (const intersectionEvent of e) {
-          if (intersectionEvent.isIntersecting) {
-            anchor.classList.add("font-bold");
-          } else {
-            anchor.classList.remove("font-bold");
-          }
+    const observer = new IntersectionObserver((e) => {
+      for (const intersectionEvent of e) {
+        if (intersectionEvent.isIntersecting) {
+          anchor.classList.add("md:font-bold");
+        } else {
+          anchor.classList.remove("md:font-bold");
         }
-      },
-    );
+      }
+    });
 
     const linkedSection = document.querySelector(
       `article[data-section="${headingId?.substring(1)}"]`
@@ -71,7 +128,8 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
 
-      window.history.replaceState(null, "", headingId);
+      closeMobileMenu();
+      // window.history.replaceState(null, "", headingId);
 
       document.querySelector(`${headingId}`)?.scrollIntoView({
         behavior: "smooth",
