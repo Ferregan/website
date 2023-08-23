@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    class?: string,
+  class?: string;
 }
 
 const { class: bodyClass = "bg-white text-black" } = Astro.props;
@@ -12,6 +12,10 @@ const { class: bodyClass = "bg-white text-black" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Ferregan is an independent studio in the Austrian Alps, specializing in illustration and design. Since 2022 Ferregan works on visual experiences globally across various media, such as branding, print, and digital platforms with a focus on simplifying visual communication for greater accessibility."
+    />
     <title>Ferregan</title>
     <style>
       @font-face {
