@@ -1,0 +1,14 @@
+---
+// markdown DOES NOT add a p tag if you have direct html children, so we have a separate grid for when slideshows are in the grid
+
+export interface Props {
+  cols: number;
+}
+
+const { cols } = Astro.props;
+---
+
+<div class="grid gap-3" style={`grid-template-columns: repeat(${cols}, minmax(0, 1fr))`}>
+    <slot />
+</div>
+

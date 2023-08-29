@@ -6,20 +6,23 @@
   const slideshows = document.querySelectorAll(".slideshow");
 
   for (const container of slideshows) {
-    for (const e of container.children) {
+    // markdown parser adds <p> tags inside elements, so we want the p tag
+    const imageContainer = container.children[0];
+
+    for (const e of imageContainer.children) {
       e.classList.add("hidden");
     }
 
-    const numChildren = container.children.length;
+    const numChildren = imageContainer.children.length;
     let currentChild = 0;
 
-    container.children[currentChild].classList.toggle("hidden");
+    imageContainer.children[currentChild].classList.toggle("hidden");
 
     setInterval(() => {
       const prevChild = currentChild;
-      container.children[prevChild].classList.toggle("hidden");
+      imageContainer.children[prevChild].classList.toggle("hidden");
       currentChild = (prevChild + 1) % numChildren;
-      container.children[currentChild].classList.toggle("hidden");
+      imageContainer.children[currentChild].classList.toggle("hidden");
     }, 700);
   }
 </script>

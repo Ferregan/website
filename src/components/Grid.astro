@@ -6,6 +6,16 @@ export interface Props {
 const { cols } = Astro.props;
 ---
 
-<div class="grid gap-3" style={`grid-template-columns: repeat(${cols}, minmax(0, 1fr))`}>
+<div class="illustration-grid" style={`--columns: ${cols}`}>
   <slot />
 </div>
+
+
+<style is:global>
+/* markdown inserts p tags, apply grid to p tag */
+div.illustration-grid > p {
+  display: grid;
+  gap: 0.1875rem;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+}
+</style>

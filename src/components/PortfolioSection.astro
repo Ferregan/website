@@ -12,6 +12,7 @@ const { item } = Astro.props;
 const { Content } = await item.render();
 
 import Grid from "./Grid.astro";
+import SlideshowGrid from "./SlideshowGrid.astro";
 import Slideshow from "./Slideshow.astro";
 ---
 
@@ -35,5 +36,5 @@ import Slideshow from "./Slideshow.astro";
   </ul>
   <br />
   Description:
-  <Content components={{ Grid, Slideshow }} />
+  <Content components={{ Grid, Slideshow, SlideshowGrid }} />
 </article>
