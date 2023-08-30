@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 import PortfolioSection from "../components/PortfolioSection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import Header from "../components/Header.astro";
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
@@ -24,52 +24,13 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </ul>
   </nav>
   <main class="flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-6">
-    <header
-      class="sticky flex justify-between items-start top-0 w-full bg-white h-28 pt-5"
-    >
-      <h1 class="text-3xl font-bold z-50">Ferregan</h1>
-      <button
-        type="button"
-        class="h-9 md:hidden whitespace-nowrap"
-        id="mobile-menu-open"
-      >
-        Menu
-      </button>
-      <nav
-        id="mobile-menu"
-        class="fixed md:hidden transition-[left] left-full w-full inset-y-0 z-30"
-      >
-        <div class="ml-14 bg-yellow h-full flex flex-col">
-          <div class="pt-5 h-28 flex items-start">
-            <button class="ml-auto h-9 px-6" id="mobile-menu-close"
-              >Close</button
-            >
-          </div>
-          <ul class="flex-1 px-3 overflow-auto">
-            {
-              portfolio.map((item) => (
-                <li class="text-xs/6 pb-1">
-                  <a href={`#${item.slug}`}>
-                    <Image
-                      class="aspect-video object-cover w-full"
-                      alt={`Banner for ${item.data.title}`}
-                      src={item.data.banner}
-                    />
-                    {item.data.title}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </nav>
-    </header>
+    <Header />
     {portfolio.map((item) => <PortfolioSection item={item} />)}
   </main>
-  <footer>
+  <footer class="ml-auto md:mr-3">
     <nav class="sticky right-0 inset-y-0 w-6">
       <div
-        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold md:-translate-x-3 gap-8 whitespace-nowrap"
+        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold gap-8 whitespace-nowrap"
       >
         <a href="/about">About</a>
         <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
