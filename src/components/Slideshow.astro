@@ -3,7 +3,12 @@
 </div>
 
 <script>
-  const slideshows = document.querySelectorAll(".slideshow");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // dont show slideshows for users who prefer calm
+  const slideshows = prefersReducedMotion
+    ? []
+    : document.querySelectorAll(".slideshow");
 
   for (const container of slideshows) {
     // markdown parser adds <p> tags inside elements, so we want the p tag

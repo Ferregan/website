@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 
-import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutSitesLayout from "../layouts/AboutSitesLayout.astro";
 import Header from "../components/Header.astro";
 import Slideshow from "../components/Slideshow.astro";
 
@@ -10,33 +10,14 @@ const about = await getEntry({collection: "about", slug: "about"});
 const { Content } = await about.render();
 ---
 
-<BaseLayout>
-  <main class="flex flex-1 flex-col pl-3 md:pl-0 md:mr-6">
-    <div class="md:ml-80 md:pr-20">
-      <Header />
-    </div>
-    <div class="md:ml-16 grid grid-cols-1 gap-4 md:gap-x-0 md:gap-y-7 md:grid-cols-[16rem_minmax(0,_48rem)]">
-      <h2 class="pb-7">About</h2>
-      <div>
-        <Content components={{ Slideshow }}/>
-      </div>
-      <h2 class="pb-7">Info</h2>
-      <p>
-        TODO: Info
-      </p>
-    </div>
-  </main>
-  <aside class="ml-auto md:mr-3">
-    <nav class="sticky right-0 inset-y-0 w-6">
-      <div
-        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold gap-8 whitespace-nowrap"
-      >
-        <a href="/about">About</a>
-        <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
-        <a href="mailto:gustavo@ferregan.com">gustavo@ferregan.com</a>
-        <a href="tel:00436705513222">+43 670 551 3222</a>
-      </div>
-    </nav>
-  </aside>
-</BaseLayout>
+<AboutSitesLayout>
+  <h2 class="pb-7">About</h2>
+  <div>
+    <Content components={{ Slideshow }}/>
+  </div>
+  <h2 class="pb-7">Info</h2>
+  <p>
+    TODO: Info
+  </p>
+</AboutSitesLayout>
 

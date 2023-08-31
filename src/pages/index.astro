@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import PortfolioSection from "../components/PortfolioSection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
@@ -23,22 +24,11 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
       }
     </ul>
   </nav>
-  <main class="flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-6">
+  <main class="flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-3">
     <Header />
     {portfolio.map((item) => <PortfolioSection item={item} />)}
   </main>
-  <aside class="ml-auto md:mr-3">
-    <nav class="sticky right-0 inset-y-0 w-6">
-      <div
-        class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold gap-8 whitespace-nowrap"
-      >
-        <a href="/about">About</a>
-        <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
-        <a href="mailto:gustavo@ferregan.com">gustavo@ferregan.com</a>
-        <a href="tel:00436705513222">+43 670 551 3222</a>
-      </div>
-    </nav>
-  </aside>
+  <Sidebar />
 </BaseLayout>
 <script>
   // all links that link to headings on this page

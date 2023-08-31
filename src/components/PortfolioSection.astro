@@ -14,6 +14,7 @@ const { Content } = await item.render();
 import Grid from "./Grid.astro";
 import SlideshowGrid from "./SlideshowGrid.astro";
 import Slideshow from "./Slideshow.astro";
+import Illustrations from "./Illustrations.astro";
 ---
 
 <article data-section={item.slug} class="pb-16 text-sm/4 text-justify">
@@ -36,5 +37,5 @@ import Slideshow from "./Slideshow.astro";
   </ul>
   <br />
   Description:
-  <Content components={{ Grid, Slideshow, SlideshowGrid }} />
+  <Content components={{ Grid, Slideshow, SlideshowGrid, Illustrations }} />
 </article>
