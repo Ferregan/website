@@ -11,22 +11,22 @@ const { Content } = await about.render();
 ---
 
 <BaseLayout>
-  <nav class="hidden md:flex flex-col pr-20 w-64 ml-16">
-  </nav>
-  <main class="flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-6">
-    <Header />
-    <div>
-      <h2>About</h2>
-      <p>
+  <main class="flex flex-1 flex-col pl-3 md:pl-0 md:mr-6">
+    <div class="md:ml-80 md:pr-20">
+      <Header />
+    </div>
+    <div class="md:ml-16 grid grid-cols-1 gap-4 md:gap-x-0 md:gap-y-7 md:grid-cols-[16rem_minmax(0,_48rem)]">
+      <h2 class="pb-7">About</h2>
+      <div>
         <Content components={{ Slideshow }}/>
-      </p>
-      <h2>Info</h2>
+      </div>
+      <h2 class="pb-7">Info</h2>
       <p>
         TODO: Info
       </p>
     </div>
   </main>
-  <footer class="ml-auto md:mr-3">
+  <aside class="ml-auto md:mr-3">
     <nav class="sticky right-0 inset-y-0 w-6">
       <div
         class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold gap-8 whitespace-nowrap"
@@ -37,6 +37,6 @@ const { Content } = await about.render();
         <a href="tel:00436705513222">+43 670 551 3222</a>
       </div>
     </nav>
-  </footer>
+  </aside>
 </BaseLayout>
 

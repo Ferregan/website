@@ -27,7 +27,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     <Header />
     {portfolio.map((item) => <PortfolioSection item={item} />)}
   </main>
-  <footer class="ml-auto md:mr-3">
+  <aside class="ml-auto md:mr-3">
     <nav class="sticky right-0 inset-y-0 w-6">
       <div
         class="origin-top-left translate-y-[100vh] -rotate-90 w-[100vh] px-4 flex flex-row md:font-bold gap-8 whitespace-nowrap"
@@ -38,35 +38,12 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
         <a href="tel:00436705513222">+43 670 551 3222</a>
       </div>
     </nav>
-  </footer>
+  </aside>
 </BaseLayout>
 <script>
-  const mobileMenu = document.getElementById("mobile-menu");
-  const footer = document.getElementsByTagName("footer")[0];
-
-  function openMobileMenu() {
-    mobileMenu?.classList.add("left-0");
-    mobileMenu?.classList.remove("left-full");
-    // make content behind fixed overlay non-scrollable
-    document.body.classList.add("overflow-hidden");
-    footer?.classList.add("invisible");
-  }
-  function closeMobileMenu() {
-    mobileMenu?.classList.remove("left-0");
-    mobileMenu?.classList.add("left-full");
-    document.body.classList.remove("overflow-hidden");
-    footer?.classList.remove("invisible");
-  }
-
-  document
-    .getElementById("mobile-menu-open")
-    ?.addEventListener("click", openMobileMenu);
-  document
-    .getElementById("mobile-menu-close")
-    ?.addEventListener("click", closeMobileMenu);
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    const headingId = anchor.getAttribute("href");
+  // all links that link to headings on this page
+  document.querySelectorAll('a[href^="/#"]').forEach((anchor) => {
+    const headingId = anchor.getAttribute("href")?.substring(1);
 
     // highlight current section
     const observer = new IntersectionObserver((e) => {
@@ -91,7 +68,6 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
 
-      closeMobileMenu();
       // window.history.replaceState(null, "", headingId);
 
       document.querySelector(`${headingId}`)?.scrollIntoView({

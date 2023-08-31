@@ -9,8 +9,8 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 <header
     class="sticky flex justify-between items-start top-0 w-full bg-white h-28 pt-5"
 >
-    <a href="/">
-        <h1 class="text-3xl font-bold z-50">Ferregan</h1>
+    <a class="text-3xl font-bold z-50" href="/">
+        <h1>Ferregan</h1>
     </a>
     <button
         type="button"
@@ -33,7 +33,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
                 {
                 portfolio.map((item) => (
                     <li class="text-xs/6 pb-1">
-                        <a href={`#${item.slug}`}>
+                        <a href={`/#${item.slug}`}>
                             <Image
                                 class="aspect-video object-cover w-full"
                                 alt={`Banner for ${item.data.title}`}
@@ -49,3 +49,34 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     </nav>
 </header>
 
+<script>
+  const mobileMenu = document.getElementById("mobile-menu");
+  const sidebar = document.getElementsByTagName("aside")[0];
+
+  function openMobileMenu() {
+    mobileMenu?.classList.add("left-0");
+    mobileMenu?.classList.remove("left-full");
+    // make content behind fixed overlay non-scrollable
+    document.body.classList.add("overflow-hidden");
+    sidebar?.classList.add("invisible");
+  }
+
+  function closeMobileMenu() {
+    mobileMenu?.classList.remove("left-0");
+    mobileMenu?.classList.add("left-full");
+    document.body.classList.remove("overflow-hidden");
+    sidebar?.classList.remove("invisible");
+  }
+
+  document
+    .getElementById("mobile-menu-open")
+    ?.addEventListener("click", openMobileMenu);
+
+  document
+    .getElementById("mobile-menu-close")
+    ?.addEventListener("click", closeMobileMenu);
+
+  document.querySelectorAll('a[href^="/#"]').forEach((anchor) => {
+    anchor.addEventListener("click", closeMobileMenu);
+  });
+</script>

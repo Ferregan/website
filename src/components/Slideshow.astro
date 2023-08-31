@@ -1,4 +1,4 @@
-<div class="slideshow aspect-square">
+<div class="slideshow">
   <slot />
 </div>
 
@@ -11,6 +11,8 @@
 
     for (const e of imageContainer.children) {
       e.classList.add("hidden");
+      // load eagerly, so it doesnt flicker on slideshow change
+      e.setAttribute("loading", "eager")
     }
 
     const numChildren = imageContainer.children.length;
