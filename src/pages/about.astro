@@ -4,21 +4,21 @@ import { getEntry } from "astro:content";
 import AboutSitesLayout from "../layouts/AboutSitesLayout.astro";
 import Slideshow from "../components/Slideshow.astro";
 
-const about = await getEntry({collection: "about", slug: "about"});
+const about = await getEntry("about", "about");
 
 const { Content } = await about.render();
 ---
 
 <AboutSitesLayout>
-  <h2 class="pb-7">About</h2>
+  <h2 class="pb-7 text-sm/4">About</h2>
   <section class="text-sm/4">
     <Content components={{ Slideshow }}/>
   </section>
-  <h2 class="pb-7">Info</h2>
-  <section>
+  <h2 class="pb-7 text-sm/4">Info</h2>
+  <section class="text-sm/4">
     TODO: Info
 
-    <nav class="flex flex-row justify-evenly">
+    <nav class="flex flex-col md:flex-row justify-start md:justify-evenly">
       <a href="/impressum">Impressum</a>
     </nav>
   </section>

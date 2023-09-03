@@ -1,10 +1,14 @@
 ---
+import { getEntry } from "astro:content";
 import AboutSitesLayout from "../layouts/AboutSitesLayout.astro";
+
+const impressum = await getEntry("about", "impressum");
+const { Content } = await impressum?.render();
 ---
 
 <AboutSitesLayout class="bg-yellow">
-  <h2>Impressum</h2>
-  <section>
-
+  <h2 class="text-sm/4">Impressum</h2>
+  <section class="leading-4 text-sm/4">
+    <Content />
   </section>
 </AboutSitesLayout>
