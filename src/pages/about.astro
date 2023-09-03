@@ -12,12 +12,16 @@ const { Content } = await about.render();
 
 <AboutSitesLayout>
   <h2 class="pb-7">About</h2>
-  <div>
+  <section>
     <Content components={{ Slideshow }}/>
-  </div>
+  </section>
   <h2 class="pb-7">Info</h2>
-  <p>
+  <section>
     TODO: Info
-  </p>
+
+    <nav class="flex flex-row justify-evenly">
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </section>
 </AboutSitesLayout>
 
