@@ -6,6 +6,7 @@ module.exports = {
             sans: ["Satoshi-Variable", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"]
         },
         colors: {
+            inherit: "inherit",
             transparent: "rgba(0, 0, 0, 0)",
             white: "rgb(255, 255, 255)",
             black: "rgb(28, 28, 28)",
