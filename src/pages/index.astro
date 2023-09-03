@@ -16,7 +16,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
       {
         portfolio.map((item) => (
           <li>
-            <a class="text-[0.9375rem] hover:font-bold" href={`#${item.slug}`}>
+            <a class="text-[0.9375rem] hover:font-bold" href={`/#${item.slug}`}>
               {item.data.title}
             </a>
           </li>
