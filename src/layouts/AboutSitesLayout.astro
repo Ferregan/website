@@ -11,10 +11,10 @@ const { class: layoutClass } = Astro.props;
 ---
 <BaseLayout class={layoutClass}>
   <main class="flex flex-1 flex-col pl-3 md:pl-0 md:mr-3">
-    <div class="md:ml-80 md:pr-20">
+    <div class="md:ml-[25rem]">
       <Header />
     </div>
-    <div class="md:ml-16 grid grid-cols-1 gap-4 md:gap-x-0 md:gap-y-7 md:grid-cols-[16rem_minmax(0,_48rem)]">
+    <div class="md:ml-16 grid grid-cols-1 gap-4 md:gap-x-0 md:gap-y-7 md:grid-cols-[21rem_minmax(0,_48rem)]">
       <slot />
   </main>
   <Sidebar />

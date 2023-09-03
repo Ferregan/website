@@ -1,8 +1,7 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 
 import AboutSitesLayout from "../layouts/AboutSitesLayout.astro";
-import Header from "../components/Header.astro";
 import Slideshow from "../components/Slideshow.astro";
 
 const about = await getEntry({collection: "about", slug: "about"});
@@ -12,7 +11,7 @@ const { Content } = await about.render();
 
 <AboutSitesLayout>
   <h2 class="pb-7">About</h2>
-  <section>
+  <section class="text-sm/4">
     <Content components={{ Slideshow }}/>
   </section>
   <h2 class="pb-7">Info</h2>

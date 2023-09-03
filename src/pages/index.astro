@@ -11,12 +11,12 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <nav class="hidden md:flex flex-col pr-20 w-64 ml-16">
+  <nav class="hidden md:flex flex-col mr-20 w-64 ml-16">
     <ul class="sticky top-5 flex flex-col">
       {
         portfolio.map((item) => (
           <li>
-            <a class="hover:font-bold" href={`#${item.slug}`}>
+            <a class="text-[0.9375rem] hover:font-bold" href={`#${item.slug}`}>
               {item.data.title}
             </a>
           </li>
