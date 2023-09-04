@@ -16,8 +16,20 @@ const about = defineCollection({
     type: "content"
 });
 
+const contact = defineCollection({
+    type: "data",
+    schema: z.object({
+        instagram: z.string(),
+        facebook: z.string(),
+        linkedin: z.string(),
+        email: z.string(),
+        telephone: z.string(),
+    })
+});
+
 export const collections = {
     portfolio,
-    about
+    about,
+    contact,
 };
 

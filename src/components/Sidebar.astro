@@ -1,5 +1,8 @@
 ---
+import { getEntry } from "astro:content";
+
 const onMainPage = Astro.url.pathname == "/";
+const contact = await getEntry("contact", "contact");
 ---
 
 <aside class="ml-auto md:mr-3">
@@ -12,9 +15,9 @@ const onMainPage = Astro.url.pathname == "/";
       ): (
         <a href="/">Go back</a>
       )}
-      <a href="https://www.instagram.com/studio_ferregan/">Instagram</a>
-      <a href="mailto:gustavo@ferregan.com">gustavo@ferregan.com</a>
-      <a href="tel:00436705513222">+43 670 551 3222</a>
+      <a href={contact.data.instagram}>Instagram</a>
+      <a href={`mailto:${contact.data.email}`}>{contact.data.email}</a>
+      <a href={`tel:${contact.data.telephone}`}>{contact.data.telephone}</a>
     </div>
   </nav>
 </aside>
