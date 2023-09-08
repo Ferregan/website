@@ -1,9 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+
+const contact = await getEntry("contact", "contact");
 ---
 
 <header
@@ -29,22 +31,36 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
                     Close
                 </button>
             </div>
-            <ul class="flex-1 px-3 overflow-auto">
-                {
-                portfolio.map((item) => (
-                    <li class="text-xs/6 pb-1">
-                        <a href={`/#${item.slug}`}>
-                            <Image
-                                class="aspect-video object-cover w-full"
-                                alt={`Banner for ${item.data.title}`}
-                                src={item.data.banner}
-                            />
-                            {item.data.title}
-                        </a>
-                    </li>
-                ))
-                }
-            </ul>
+            <div class="flex-1 px-3 overflow-auto">
+                <ul>
+                    {
+                    portfolio.map((item) => (
+                        <li class="text-xs/6 pb-1">
+                            <a href={`/#${item.slug}`}>
+                                <Image
+                                    class="aspect-video object-cover w-full"
+                                    alt={`Banner for ${item.data.title}`}
+                                    src={item.data.banner}
+                                />
+                                {item.data.title}
+                            </a>
+                        </li>
+                    ))
+                    }
+                </ul>
+                <div class="h-full relative flex flex-col items-center">
+                    <ul class="pt-8 mx-auto flex flex-col">
+                        <a href="/about">About</a>
+                        <a href={contact.data.instagram}>Instagram</a>
+                        <a href={contact.data.facebook}>Facebook</a>
+                        <a href={contact.data.linkedin}>Linkedin</a>
+                    </ul>
+                    <p class="absolute bottom-56 right-0 text-sm/4 flex flex-row w-48 origin-bottom-right -rotate-90">
+                        <span class="text-5xl mr-2 -mt-1">*</span>
+                        Open for any collaborations and offers
+                    </p>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
