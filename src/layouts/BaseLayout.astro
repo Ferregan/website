@@ -20,7 +20,7 @@ const { class: bodyClass = "bg-white text-black" } = Astro.props;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>Ferregan</title>
-    <style>
+    <style is:global>
       @font-face {
         font-family: "Satoshi-Variable";
         src: url("/fonts/Satoshi-Variable.woff2") format("woff2"),
@@ -29,6 +29,10 @@ const { class: bodyClass = "bg-white text-black" } = Astro.props;
         font-weight: 400 700;
         font-display: swap;
         font-style: normal;
+      }
+      img {
+        pointer-events: none;
+        user-select: none;
       }
     </style>
   </head>
