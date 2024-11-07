@@ -24,7 +24,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
       }
     </ul>
   </nav>
-  <main class="bg-white flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-3">
+  <main class="bg-white flex flex-1 gap-32 flex-col max-w-3xl pl-3 md:pl-0 md:mr-3">
     <Header />
     {portfolio.map((item) => <PortfolioSection item={item} />)}
   </main>
