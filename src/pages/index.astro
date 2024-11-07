@@ -58,7 +58,7 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // window.history.replaceState(null, "", headingId);
+      window.history.replaceState(null, "", headingId);
 
       document.querySelector(`${headingId}`)?.scrollIntoView({
         behavior: "smooth",
