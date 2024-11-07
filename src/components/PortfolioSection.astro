@@ -18,7 +18,7 @@ import Illustrations from "./Illustrations.astro";
 ---
 
 <article data-section={item.slug} class="pb-48 text-sm/4 text-justify">
-  <Image src={item.data.banner} alt={`Banner for ${item.data.title}`} />
+  <Image loading="eager" src={item.data.banner} alt={`Banner for ${item.data.title}`} />
   <br />
   <div class="flex flex-row">
     <h2 class="flex-1" id={item.slug}>
