@@ -12,7 +12,11 @@ const images = await getEntry("landingPage", "images");
     <Slideshow interval={images.data.interval}>
       <a id="leave-slideshow" href="/" class="h-full">
         {images.data.images.map((image) => (
-          <Image src={image} class="h-full object-cover" alt="Intro slideshow image" />
+          <Image 
+            loading="eager"
+            src={image} 
+            class="h-full object-cover" 
+            alt="Intro slideshow image" />
         ))}
       </a>
     </Slideshow>
