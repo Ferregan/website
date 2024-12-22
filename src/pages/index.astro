@@ -1,69 +1,40 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
-import PortfolioSection from "../components/PortfolioSection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Sidebar from "../components/Sidebar.astro";
+const contact = await getEntry("contact", "contact");
 
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <nav class="hidden md:flex flex-col mr-20 w-64 ml-16">
-    <ul class="sticky top-5 flex flex-col">
+    <ul class="flex flex-col gap-1">
+        <li>
+          <a href="/">
+            Ferregan
+          </a>
+        </li>
+        <li>
+          <a href="/about">
+            Info
+          </a>
+        </li>
+    </ul>
+    <ul class="flex flex-col gap-1">
       {
         portfolio.map((item) => (
           <li>
-            <a class="text-[0.9375rem] hover:font-bold" href={`/#${item.slug}`}>
+            <a class="hover:font-bold" href={`/work/${item.slug}`}>
               {item.data.title}
             </a>
           </li>
         ))
       }
     </ul>
-  </nav>
-  <main class="bg-white flex flex-1 flex-col max-w-3xl pl-3 md:pl-0 md:mr-3">
-    <Header />
-    {portfolio.map((item) => <PortfolioSection item={item} />)}
-  </main>
-  <Sidebar />
+    <div>
+    <a href=`tel:${contact.data.telephone}`>Call</a>
+    <a href=`mailto:${contact.data.email}`>E-mail</a>
+    </div>
 </BaseLayout>
-<script>
-  // all links that link to headings on this page
-  document.querySelectorAll('a[href^="/#"]').forEach((anchor) => {
-    const headingId = anchor.getAttribute("href")?.substring(1);
 
-    // highlight current section
-    const observer = new IntersectionObserver((e) => {
-      for (const intersectionEvent of e) {
-        if (intersectionEvent.isIntersecting) {
-          anchor.classList.add("md:font-bold");
-        } else {
-          anchor.classList.remove("md:font-bold");
-        }
-      }
-    });
-
-    const linkedSection = document.querySelector(
-      `article[data-section="${headingId?.substring(1)}"]`
-    );
-
-    if (linkedSection) {
-      observer.observe(linkedSection);
-    }
-
-    // smooth scrolling on navigation click
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      window.history.replaceState(null, "", headingId);
-
-      document.querySelector(`${headingId}`)?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    });
-  });
-</script>

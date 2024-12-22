@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import PortfolioSection from '../../components/PortfolioSection.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection("portfolio");
+  return items.map(portfolioItem => ({
+    params: { slug: portfolioItem.slug },
+    props: { portfolioItem },
+  }));
+}
+
+const { portfolioItem } = Astro.props;
+
+---
+
+<BaseLayout>
+  <PortfolioSection item={portfolioItem} />
+</BaseLayout>
+
