@@ -37,11 +37,6 @@ const contact = await getEntry("contact", "contact");
                     portfolio.map((item) => (
                         <li class="text-xs/6 pb-1">
                             <a href={`/#${item.slug}`}>
-                                <Image
-                                    class="aspect-video object-cover w-full"
-                                    alt={`Banner for ${item.data.title}`}
-                                    src={item.data.banner}
-                                />
                                 {item.data.title}
                             </a>
                         </li>
