@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 type PortfolioItem = CollectionEntry<"portfolio">;
 
 export interface Props {
@@ -7,8 +7,7 @@ export interface Props {
 }
 
 const { item } = Astro.props;
-
-const { Content } = await item.render();
+const { Content } = await render(item);
 
 import Grid from "./Grid.astro";
 import SlideshowGrid from "./SlideshowGrid.astro";
