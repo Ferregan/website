@@ -1,4 +1,13 @@
-<div class="slideshow">
+---
+interface Props {
+  interval?: number,
+}
+
+const { interval = 1000 } = Astro.props;
+
+---
+
+<div class="h-full slideshow" data-interval={interval}>
   <slot />
 </div>
 
@@ -20,6 +29,8 @@
       e.setAttribute("loading", "eager")
     }
 
+    const interval = parseInt(container.getAttribute("data-interval")!);
+
     const numChildren = imageContainer.children.length;
     let currentChild = 0;
 
@@ -30,6 +41,6 @@
       imageContainer.children[prevChild].classList.toggle("hidden");
       currentChild = (prevChild + 1) % numChildren;
       imageContainer.children[currentChild].classList.toggle("hidden");
-    }, 1000);
+    }, interval);
   }
 </script>

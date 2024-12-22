@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Slideshow from "../components/Slideshow.astro";
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+const images = await getEntry("landingPage", "images");
+---
+
+<BaseLayout>
+  <div class="absolute inset-0">
+    <Slideshow interval={images.data.interval}>
+      <a id="leave-slideshow" href="/" class="h-full">
+        {images.data.images.map((image) => (
+          <Image src={image} class="h-full object-cover" alt="Intro slideshow image" />
+        ))}
+      </a>
+    </Slideshow>
+  </div>
+</BaseLayout>
+
+<script>
+  document.getElementById("leave-slideshow")!.addEventListener("click", () => {
+    sessionStorage.setItem("slideshow_hidden", "1");
+  });
+</script>

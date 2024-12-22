@@ -1,6 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.astro";
 
 const impressum = await getEntry("about", "impressum");
 const { Content } = await impressum?.render();
@@ -8,5 +9,9 @@ const { Content } = await impressum?.render();
 ---
 
 <BaseLayout>
-  <Content />
+  <Navigation>
+    <main class="mt-auto">
+      <Content />
+    </main>
+  </Navigation>
 </BaseLayout>

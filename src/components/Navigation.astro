@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry } from "astro:content";
+
+const contact = await getEntry("contact", "contact");
+
+const portfolioItems = await getCollection("portfolio");
+const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="p-5 max-w-md">
+    <ul class="flex flex-col gap-3">
+        <li>
+          <a href="/intro">
+            Ferregan
+          </a>
+        </li>
+        <li>
+          <a href="/about">
+            Info
+          </a>
+        </li>
+    </ul>
+
+    <ul class="flex flex-col gap-3 mt-8">
+      {
+        portfolio.map((item) => (
+          <li>
+            <a href={`/work/${item.slug}`}>
+              {item.data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-72 flex justify-between">
+      <a href=`tel:${contact.data.telephone}`>Call</a>
+      <a href=`mailto:${contact.data.email}`>E-mail</a>
+    </div>
+
+    <slot />
+</div>
