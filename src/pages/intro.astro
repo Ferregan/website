@@ -10,13 +10,13 @@ const images = await getEntry("landingPage", "images");
 <BaseLayout>
   <div class="absolute inset-0">
     <Slideshow class="h-full" interval={images.data.interval}>
-      <a id="leave-slideshow" href="/" class="h-full">
+      <a href="/" class="h-full">
         {images.data.images.map((image) => (
           <Image 
             loading="eager"
             src={image} 
             class="h-full" 
-            alt="Intro slideshow image" />
+            alt="Click to enter website" />
         ))}
       </a>
     </Slideshow>
@@ -24,7 +24,5 @@ const images = await getEntry("landingPage", "images");
 </BaseLayout>
 
 <script>
-  document.getElementById("leave-slideshow")!.addEventListener("click", () => {
-    sessionStorage.setItem("slideshow_hidden", "1");
-  });
+  sessionStorage.setItem("slideshow_hidden", "1");
 </script>

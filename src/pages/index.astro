@@ -9,6 +9,7 @@ import Navigation from "../components/Navigation.astro";
 
 <script>
   if (!sessionStorage.getItem("slideshow_hidden")) {
-    location.href = "/intro"
+    window.history.pushState(window.history.state, "");
+    location.href = "/intro";
   }
 </script>
