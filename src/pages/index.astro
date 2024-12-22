@@ -1,40 +1,14 @@
 ---
-import { getCollection, getEntry } from "astro:content";
-
 import BaseLayout from "../layouts/BaseLayout.astro";
-const contact = await getEntry("contact", "contact");
-
-const portfolioItems = await getCollection("portfolio");
-const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
+import Navigation from "../components/Navigation.astro";
 ---
 
 <BaseLayout>
-    <ul class="flex flex-col gap-1">
-        <li>
-          <a href="/">
-            Ferregan
-          </a>
-        </li>
-        <li>
-          <a href="/about">
-            Info
-          </a>
-        </li>
-    </ul>
-    <ul class="flex flex-col gap-1">
-      {
-        portfolio.map((item) => (
-          <li>
-            <a class="hover:font-bold" href={`/work/${item.slug}`}>
-              {item.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <div>
-    <a href=`tel:${contact.data.telephone}`>Call</a>
-    <a href=`mailto:${contact.data.email}`>E-mail</a>
-    </div>
+  <Navigation />
 </BaseLayout>
 
+<script>
+  if (!sessionStorage.getItem("slideshow_hidden")) {
+    location.href = "/intro"
+  }
+</script>
