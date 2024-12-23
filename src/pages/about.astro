@@ -1,45 +1,19 @@
 ---
 import { getEntry } from "astro:content";
 
-import AboutSitesLayout from "../layouts/AboutSitesLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Grid from "../components/Grid.astro";
+import SlideshowGrid from "../components/SlideshowGrid.astro";
 import Slideshow from "../components/Slideshow.astro";
 import Illustrations from "../components/Illustrations.astro";
+import Description from "../components/Description.astro";
 
 const about = await getEntry("about", "about");
-const contact = await getEntry("contact", "contact");
-
 const { Content } = await about.render();
+
 ---
 
-<AboutSitesLayout>
-  <h2 class="pb-7 text-sm/4">About</h2>
-  <section class="text-sm/4 text-justify">
-    <Content components={{ Slideshow, Illustrations }}/>
-  </section>
-  <h2 class="pb-7 text-sm/4">Info</h2>
-  <section class="text-sm/4">
-    <div class="flex flex-row justify-between mb-4">
-      <p>
-        Studio in Vorarlberg: <br />
-        Millennium Park 6 <br />
-        6850 Lustenau <br />
-        Austria <br />
-      </p>
-      <p class="flex flex-row w-48">
-        <span class="text-5xl mr-2 -mt-1">*</span>
-        Open for any collaborations and offers
-      </p>
-    </div>
-
-    <a class="underline" href={`mailto:${contact.data.email}`}>{contact.data.email}</a> <br />
-    <a href={`tel:${contact.data.telephone}`}>{contact.data.telephone}</a> <br />
-
-    <nav class="mt-6 pb-5 text-base flex flex-col md:flex-row justify-start md:justify-between">
-      <a href="/impressum">Impressum</a>
-      <a href={contact.data.instagram}>Instagram</a>
-      <a href={contact.data.facebook}>Facebook</a>
-      <a href={contact.data.linkedin}>Linkedin</a>
-    </nav>
-  </section>
-</AboutSitesLayout>
+<BaseLayout>
+  <Content components={{ Grid, Slideshow, SlideshowGrid, Illustrations, Description }}/>
+</BaseLayout>
 

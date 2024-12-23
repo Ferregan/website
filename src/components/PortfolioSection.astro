@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 type PortfolioItem = CollectionEntry<"portfolio">;
 
 export interface Props {
@@ -8,34 +7,13 @@ export interface Props {
 }
 
 const { item } = Astro.props;
-
-const { Content } = await item.render();
+const { Content } = await render(item);
 
 import Grid from "./Grid.astro";
 import SlideshowGrid from "./SlideshowGrid.astro";
 import Slideshow from "./Slideshow.astro";
 import Illustrations from "./Illustrations.astro";
+import Description from "./Description.astro";
 ---
 
-<article data-section={item.slug} class="pb-48 text-sm/4 text-justify">
-  <Image loading="eager" src={item.data.banner} alt={`Banner for ${item.data.title}`} />
-  <br />
-  <div class="flex flex-row">
-    <h2 class="flex-1" id={item.slug}>
-      Client: <br />
-      {item.data.client}
-    </h2>
-    <span class="pr-[20%]">
-      Date: <br />
-      {item.data.date}
-    </span>
-  </div>
-  <br />
-  Services:
-  <ul>
-    {item.data.services.map((service) => <li>{service}</li>)}
-  </ul>
-  <br />
-  Description:
-  <Content components={{ Grid, Slideshow, SlideshowGrid, Illustrations }} />
-</article>
+<Content components={{ Grid, Slideshow, SlideshowGrid, Illustrations, Description }} />

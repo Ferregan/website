@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Slideshow from "../components/Slideshow.astro";
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+const images = await getEntry("landingPage", "images");
+---
+
+<BaseLayout>
+  <div class="absolute inset-0">
+    <Slideshow class="h-full" interval={images.data.interval}>
+      <a href="/" class="h-full">
+        {images.data.images.map((image) => (
+          <Image 
+            loading="eager"
+            src={image} 
+            class="h-full" 
+            alt="Click to enter website" />
+        ))}
+      </a>
+    </Slideshow>
+  </div>
+</BaseLayout>
+
+<script>
+  sessionStorage.setItem("slideshow_hidden", "1");
+</script>

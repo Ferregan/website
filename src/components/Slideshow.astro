@@ -1,4 +1,14 @@
-<div class="slideshow">
+---
+interface Props {
+  interval?: number,
+  class?: string,
+}
+
+const { interval = 1000, class: classes } = Astro.props;
+
+---
+
+<div class=`slideshow ${classes}` data-interval={interval}>
   <slot />
 </div>
 
@@ -13,23 +23,24 @@
   for (const container of slideshows) {
     // markdown parser adds <p> tags inside elements, so we want the p tag
     const imageContainer = container.children[0];
+    imageContainer.classList.add("grid", "grid-cols-1", "grid-rows-1");
 
     for (const e of imageContainer.children) {
-      e.classList.add("hidden");
-      // load eagerly, so it doesnt flicker on slideshow change
-      e.setAttribute("loading", "eager")
+      e.classList.add("row-start-1", "col-start-1")
     }
+
+    const interval = parseInt(container.getAttribute("data-interval")!);
 
     const numChildren = imageContainer.children.length;
     let currentChild = 0;
 
-    imageContainer.children[currentChild].classList.toggle("hidden");
+    imageContainer.children[currentChild].classList.toggle("z-10");
 
     setInterval(() => {
       const prevChild = currentChild;
-      imageContainer.children[prevChild].classList.toggle("hidden");
+      imageContainer.children[prevChild].classList.toggle("z-10");
       currentChild = (prevChild + 1) % numChildren;
-      imageContainer.children[currentChild].classList.toggle("hidden");
-    }, 1000);
+      imageContainer.children[currentChild].classList.toggle("z-10");
+    }, interval);
   }
 </script>
