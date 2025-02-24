@@ -15,10 +15,8 @@ const about = defineCollection({
 const contact = defineCollection({
     type: "data",
     schema: z.object({
-        instagram: z.string(),
-        facebook: z.string(),
-        linkedin: z.string(),
         email: z.string(),
+        social: z.string(),
         telephone: z.string(),
     })
 });
