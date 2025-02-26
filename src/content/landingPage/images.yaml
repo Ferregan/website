@@ -1,14 +1,15 @@
-interval: 150
+interval: 250
 redirectAfter: 2000
 images:
-  - "../portfolio/win/win-card-game-illustrationtwo-ferregan.jpg"
-  - "../portfolio/personal/personal-illustrationone-ferregan.jpg"
-  - "../portfolio/glesshub/glesshub-windowfour-ferregan.jpg"
-  - "../portfolio/win/win-card-game-illustrationfour-ferregan.jpg"
-  - "../portfolio/svu/svu-illustrationthree-ferregan.jpg"
-  - "../portfolio/svu/svu-illustrationone-ferregan-1.jpg"
-  - "../portfolio/personal/personal-illustrationtwo-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationone-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationtwo-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationfour-ferregan.jpg"
+  - "../landingPage/landingpage/Carrrusel-illustrationfive-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-ilustrationsix-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustratioonseven-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationeight-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationnine-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationten-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustrationeleven-ferregan.jpg"
+  - "../landingPage/landingpage/Carrusel-illustration-ferregan-3.jpg"
   - "../portfolio/glesshub/glesshub-bagonsofa-ferregan.jpg"
-  - "../portfolio/win/win-card-game-illustrationsix-ferregan.jpg"
-  - "../portfolio/personal/personal-illustrationfive-ferregan.jpg"
-
