@@ -5,6 +5,7 @@ import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
 
 const images = await getEntry("landingPage", "images");
+const redirectAfter = images.data.redirectAfter;
 ---
 
 <BaseLayout>
@@ -23,6 +24,10 @@ const images = await getEntry("landingPage", "images");
   </div>
 </BaseLayout>
 
-<script>
+<script is:inline define:vars={{redirectAfter}}>
   sessionStorage.setItem("slideshow_hidden", "1");
+
+  setInterval(() => {
+    location.href = "/";
+  }, redirectAfter);
 </script>

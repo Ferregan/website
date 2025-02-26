@@ -1,4 +1,5 @@
-interval: 2000
+interval: 150
+redirectAfter: 2000
 images:
   - "../portfolio/win/win-card-game-illustrationtwo-ferregan.jpg"
   - "../portfolio/personal/personal-illustrationone-ferregan.jpg"
