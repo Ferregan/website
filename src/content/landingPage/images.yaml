@@ -1,15 +1,18 @@
-interval: 250
+interval: 90
 redirectAfter: 2000
 images:
-  - "../landingPage/landingpage/Carrusel-illustrationone-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationtwo-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationfour-ferregan.jpg"
-  - "../landingPage/landingpage/Carrrusel-illustrationfive-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-ilustrationsix-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustratioonseven-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationeight-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationnine-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationten-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustrationeleven-ferregan.jpg"
-  - "../landingPage/landingpage/Carrusel-illustration-ferregan-3.jpg"
-  - "../portfolio/glesshub/glesshub-bagonsofa-ferregan.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration1.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration2.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration3.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration4.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration5.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration6.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration7.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration8.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration9.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration10.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration11.jpg"
+  - "../landingPage/landingpage/Karrusel-illustration13.png"
+  - "../landingPage/landingpage/Karrusel-illustration14.jpg"
+  
+  
