@@ -1,18 +1,16 @@
-interval: 90
+interval: 150
 redirectAfter: 2000
 images:
-  - "../landingPage/landingpage/Karrusel-illustration1.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration2.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration3.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration4.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration5.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration6.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration7.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration8.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration9.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration10.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration11.jpg"
-  - "../landingPage/landingpage/Karrusel-illustration13.png"
-  - "../landingPage/landingpage/Karrusel-illustration14.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-1.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-2.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-3.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-4.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-5.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-6.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-7.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-9.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-10.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-11.jpg"
+  - "../landingPage/landingpage/CARRUSEL-FERREGAN-13.jpg"
   
   
