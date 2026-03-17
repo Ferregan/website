@@ -1,15 +1,13 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 
-const contact = await getEntry("contact", "contact");
-
 const portfolioItems = await getCollection("portfolio");
 const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<nav class="p-4 max-w-md">
+<nav class="px-2 py-4">
     <ul class="flex flex-col gap-3">
-        <li><a href="/intro">Ferregan</a></li>
+        <li><a href="/">Ferregan</a></li>
         <li><a href="/about">Info</a></li>
     </ul>
 
@@ -24,12 +22,6 @@ const portfolio = portfolioItems.sort((a, b) => a.data.order - b.data.order);
         ))
       }
     </ul>
-
-    <div class="mt-72 flex justify-between">
-      <a href=`tel:${contact.data.telephone}`>Call</a>
-      <a target="_blank" rel="nofollow" href=`${contact.data.social}`>Social</a>
-      <a href=`mailto:${contact.data.email}`>E-mail</a>
-    </div>
 
     <slot />
 </nav>

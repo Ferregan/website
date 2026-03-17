@@ -7,11 +7,3 @@ import Navigation from "../components/Navigation.astro";
   <Navigation />
 </BaseLayout>
 
-<script>
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (!prefersReducedMotion && !sessionStorage.getItem("slideshow_hidden")) {
-    window.history.pushState(window.history.state, "");
-    location.href = "/intro";
-  }
-</script>
